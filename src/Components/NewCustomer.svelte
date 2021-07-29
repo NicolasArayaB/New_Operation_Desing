@@ -1,4 +1,6 @@
 <script>
+  import { Button } from 'sveltestrap';
+
   export let customers;
   export let new_customer;
   
@@ -11,16 +13,16 @@
   }
 </script>
 
-<form>
-  <h2>Nuevo Solicitante</h2>
-  
-  <label for="first_name">Nombre</label>
-  <input type="text" id="first_name">
-  <label for="last_name">Apellido</label>
-  <input type="text" id="last_name">
-  <label for="rut">Rut</label>
-  <input type="text" id="rut">
-  <div class="center">
-    <input type="button" class="btn" value="Agregar Compañía" on:click={addCustomer}>
-  </div>
-</form>
+<div class="new_wrapper">
+  <form>
+    <h2>Nuevo Solicitante</h2>
+    
+    <label for="first_name">Nombre</label><br>
+    <input type="text" id="first_name"><br>
+    <label for="last_name">Apellido</label><br>
+    <input type="text" id="last_name"><br>
+    <label for="rut">Rut</label><br>
+    <input type="text" id="rut"><br>
+    <Button outline class="my-3" on:click={addCustomer}>Agregar Solicitante</Button>
+  </form>
+</div>

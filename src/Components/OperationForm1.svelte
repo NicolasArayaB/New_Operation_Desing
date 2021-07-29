@@ -1,4 +1,5 @@
 <script>
+  import { Button } from 'sveltestrap';
   import NewClient from './NewClient.svelte';
   import NewCustomer from './NewCustomer.svelte';
 
@@ -21,13 +22,12 @@
 
   let new_client = false;
   let new_customer = false;
-
 </script>
 
-<div class="form">
-  <form>
+<div class="wrapper">
+  <form id="form1">
     <h2>Cliente</h2>
-    <select bind:value={clients} required="required" name="operation[company_id]" id="operation_company_id">
+    <select required="required" name="operation[company_id]" id="operation_company_id">
       {#each clients as client}
         <option value={client.id}>{client.name}</option>
       {/each}
@@ -36,14 +36,14 @@
     <a href="#" on:click={() => new_client =! new_client}>Nuevo Cliente</a>
     
     {#if new_client}
-      <div class="new_form">
-        <NewClient clients={clients} bind:new_client={new_client} />
+      <div class="new_wrapper">
+        <NewClient bind:clients={clients} bind:new_client={new_client} />
       </div>
     {/if}
 
     <h2>Solicitante</h2>
     
-    <select required="required" name="operation[customer_id]" id="operation_customer_id" bind:value={customers}>
+    <select required="required" name="operation[customer_id]" id="operation_customer_id">
       {#each customers as customer}
         <option value={customer.id}>{customer.name}</option>
       {/each}
@@ -52,30 +52,20 @@
     <a href="#" on:click={() => new_customer = !new_customer}>Nuevo Solicitante</a>
 
     {#if new_customer}
-      <div class="new_form">
-        <NewCustomer customers={customers} bind:new_customer={new_customer} />
-      </div> 
+      <NewCustomer bind:customers={customers} bind:new_customer={new_customer} />
     {/if}
 
     <h2>Categoría</h2>
-    <div class="category">
-      <label for="operation_status">
+    <div>
+      <label for="operation_status" class="category">
         <input type="radio" name="category" value="new">
         Nueva
       </label>
-      <label for="operation_status">
+      <label for="operation_status" class="category">
         <input type="radio"  name="category" value="repair">
         Reparo
       </label>
     </div>  
-
-    <h2>Sub-Producto</h2>
-
-    <select name="operation[sub_products]" id="operation_sub_product">
-      {#each sub_products as sub_product}
-        <option value={sub_products.id}>{sub_product.name}</option>
-      {/each}
-    </select>
 
     <h2>Producto</h2>
 
@@ -85,48 +75,38 @@
       {/each}
     </select>
 
+    <h2>Sub-Producto</h2>
+
+    <select name="operation[sub_products]" id="operation_sub_product">
+      {#each sub_products as sub_product}
+        <option value={sub_products.id}>{sub_product.name}</option>
+      {/each}
+    </select>
+
     <h2>Información adicional</h2>
     <textarea name="operation[observation]" id="operation_observation"></textarea>
     <br>
+   
     <div class="center">
-      <input type="submit" name="commit" value="Crear Operación" class="btn" data-disable-with="Create Operation">
+      <Button outline class="my-3">Crear Operación</Button>
     </div>
-  </form>
+   </form>
 </div>
 
 <style>
-  .btn {
-    border-radius: 8px;
-  }
-
   .category {
     display: inline-block;
     padding: 5px;
   }
 
-  .center {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    margin: 10px;
-  }
-
-  .form {
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    display: flex;
-    justify-content: center;
-		max-width: 25em;
-		margin: 5em auto;
-    padding: 8px;
-    text-align: start;
-  }
-
-  .new_form {
-    margin: 1em auto;
-    justify-content: center;
-		max-width: 25em;
-		margin: 1em auto;
-    text-align: start;
+  .wrapper {
+	  background-color: #ffffff;
+	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	  display: flex;
+	  justify-content: center;
+	  max-width: 25em;
+	  margin: 5em auto;
+	  padding: 8px;
+	  text-align: start;
   }
 </style>
