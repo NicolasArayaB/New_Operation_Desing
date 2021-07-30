@@ -35,6 +35,7 @@
 
   let new_client = false;
   let new_customer = false;
+  let count = 1;
   
   const toggle_cl = () => (new_client = !new_client);
   const toggle_cu = () => (new_customer = !new_customer);
@@ -67,62 +68,65 @@
       <th>Producto</th>
       <th>Sub-Producto</th>
       <th>Información adicional</th>
-      <th><form on:submit|preventDefault={handleSubmit} id="form2"><input type="hidden" name="id" value="1" /></form></th>
+      <th><form on:submit|preventDefault={()=>count += 1} id="form2"><input type="hidden" name="id" value="1" /></form></th>
     </tr>
-    <tr>
-      <td>
-        <select form="form2" required="required"  name="operation[company_id]" id="operation_company_id">
-        {#each clients as client}
-          <option value={client.id}>{client.name}</option>
-        {/each}
-        </select>
-      </td>
-
-      <td>
-        <select form="form2" required="required" name="operation[customer_id]" id="operation_customer_id" >
-          {#each customers as customer}
-            <option value={customer.id}>{customer.name}</option>
+    
+    {#each Array(count) as _, i}
+      <tr>
+        <td>
+          <select form="form2" required="required"  name="operation[company_id]" id="operation_company_id">
+          {#each clients as client}
+            <option value={client.id}>{client.name}</option>
           {/each}
-        </select>
-      </td>
+          </select>
+        </td>
 
-      <td>
-        <div>
-          <label for="operation_status" class="category">
-            <input form="form2" type="radio" name="category" value="new">
-            Nueva
-          </label>
-          <label for="operation_status" class="category">
-            <input form="form2" type="radio"  name="category" value="repair">
-            Reparo
-          </label>
-        </div>
-      </td>
+        <td>
+          <select form="form2" required="required" name="operation[customer_id]" id="operation_customer_id" >
+            {#each customers as customer}
+              <option value={customer.id}>{customer.name}</option>
+            {/each}
+          </select>
+        </td>
 
-      <td>
-        <select form="form2" name="operation[product]" id="operation_product">
-          {#each products as product}
-            <option value={product.id}>{product.name}</option>
-          {/each}
-        </select>
-      </td>
+        <td>
+          <div>
+            <label for="operation_status" class="category">
+              <input form="form2" type="radio" name="category" value="new">
+              Nueva
+            </label>
+            <label for="operation_status" class="category">
+              <input form="form2" type="radio"  name="category" value="repair">
+              Reparo
+            </label>
+          </div>
+        </td>
 
-      <td>
-        <select form="form2" name="operation[sub_products]" id="operation_sub_product">
-          {#each sub_products as sub_product}
-            <option value={sub_products}>{sub_product.name}</option>
-          {/each}
-        </select>
-      </td>
+        <td>
+          <select form="form2" name="operation[product]" id="operation_product">
+            {#each products as product}
+              <option value={product.id}>{product.name}</option>
+            {/each}
+          </select>
+        </td>
 
-      <td>
-        <textarea form="form2" name="operation[observation]" id="operation_observation"></textarea>
-      </td>
+        <td>
+          <select form="form2" name="operation[sub_products]" id="operation_sub_product">
+            {#each sub_products as sub_product}
+              <option value={sub_products}>{sub_product.name}</option>
+            {/each}
+          </select>
+        </td>
 
-      <td>
-        <Button type="submit" form="form2" outline class="m-3" >Crear Operación</Button>
-      </td>
-    </tr>
+        <td>
+          <textarea form="form2" name="operation[observation]" id="operation_observation"></textarea>
+        </td>
+
+        <td>
+          <Button type="submit" form="form2" outline class="m-3">Crear Operación</Button>
+        </td>
+      </tr>
+    {/each}
   </Table>
 </div>
 
