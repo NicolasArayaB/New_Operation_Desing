@@ -3,7 +3,13 @@
   import NewClient from './NewClient.svelte';
   import NewCustomer from './NewCustomer.svelte';
 
-  let clients = [{id: 1, name: "Seleccione un Cliente"}, {id: 2, name: "Banco Santander"}, {id: 3, name: "Banco Internacional"}, {id:4 , name: "Scotiabank"}];
+  let clients = [
+    {id: 1, name: "Seleccione un Cliente"},
+    {id: 2, name: "Banco Santander"},
+    {id: 3, name: "Banco Internacional"},
+    {id:4 , name: "Scotiabank"}
+  ];
+
   let customers = [
     {id:1, name:"Seleccione al solicitante"},
     {id:2, name:"Pedro Perez"},
@@ -11,26 +17,30 @@
     {id:4, name:"Fernanda Fernandez"},
     {id:5, name:"Henrique Henriquez"}
   ];
-  let sub_products = [{id: 1, name:"Seleccione un Sub-Producto"}, {id: 2, name:"Inf. Soc y Poderes"}, {id: 3, name:"P. Efectivas"}]
+
+  let sub_products = [
+    {id: 1, name:"Seleccione un Sub-Producto"},
+    {id: 2, name:"Inf. Soc y Poderes"},
+    {id: 3, name:"P. Efectivas"}
+  ];
+
   let products = [
     {id:1, name: "Seleccione un Producto"},
     {id:2, name: "Retail"},
     {id:3, name: "Corporativo"},
     {id:4, name: "Baja"},
     {id:5, name: "Garantías"}
-  ]
+  ];
 
   let new_client = false;
   let new_customer = false;
 
   let count = 1;
-
 </script>
 
 {#each Array(count) as _, i}
-
   <div class="wrapper">
-    <form id="form1" on:submit|preventDefault={()=>count += 1}>
+    <form on:submit|preventDefault={()=>count += 1}>
       <h2>Cliente</h2>
 
       <select required="required" name="operation[company_id]" id="operation_company_id">
@@ -39,7 +49,7 @@
         {/each}
       </select>
       <br>    
-      <a href="#" on:click={() => new_client =! new_client}>Nuevo Cliente</a>
+      <a href="#" on:click={()=>new_client =! new_client}>Nuevo Cliente</a>
 
       {#if new_client}
         <div class="new_wrapper">
@@ -55,13 +65,14 @@
         {/each}
       </select>
       <br>
-      <a href="#" on:click={() => new_customer = !new_customer}>Nuevo Solicitante</a>
+      <a href="#" on:click={()=>new_customer = !new_customer}>Nuevo Solicitante</a>
 
       {#if new_customer}
         <NewCustomer bind:customers={customers} bind:new_customer={new_customer} />
       {/if}
 
       <h2>Categoría</h2>
+      
       <div>
         <label for="operation_status" class="category">
           <input type="radio" name="category" value="new">
@@ -90,13 +101,14 @@
       </select>
 
       <h2>Información adicional</h2>
+      
       <textarea name="operation[observation]" id="operation_observation"></textarea>
       <br>
 
       <div class="center">
         <Button outline class="my-3">Crear Operación</Button>
       </div>
-     </form>
+    </form>
   </div>
 {/each}
 

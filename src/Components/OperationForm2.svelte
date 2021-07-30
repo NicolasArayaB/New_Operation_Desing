@@ -43,11 +43,11 @@
 </script>
 
 <Modal body header="Nuevo Cliente" isOpen={new_client} toggle={toggle_cl}>
-  <NewClient clients={clients} bind:new_client={new_client} />
+  <NewClient bind:clients={clients} bind:new_client={new_client} />
 </Modal>
 
 <Modal body header="Nuevo Solicitante" isOpen={new_customer} toggle={toggle_cu}>
-  <NewCustomer customers={customers} bind:new_customer={new_customer} />
+  <NewCustomer bind:customers={customers} bind:new_customer={new_customer} />
 </Modal>
 
 <div class="new_links">
