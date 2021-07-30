@@ -92,11 +92,11 @@
         <td>
           <div>
             <label for="operation_status" class="category">
-              <input form="form2" type="radio" name="category" value="new">
+              <input form="form2" type="radio" name="category" value={i}>
               Nueva
             </label>
             <label for="operation_status" class="category">
-              <input form="form2" type="radio"  name="category" value="repair">
+              <input form="form2" type="radio"  name="category" value={i}>
               Reparo
             </label>
           </div>
@@ -144,13 +144,9 @@
     border-radius: 8px;
 	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 1em auto;
-    padding-top: 1em;
+    padding: 1em 1em 0 1em;
     width: min-content;
-    text-align: start;
-  }
-
-  td {
-    padding: 1em;
+    text-align: center;
   }
 
 </style>
