@@ -1,4 +1,6 @@
 <script>
+import { prevent_default } from 'svelte/internal';
+
   import { Button } from 'sveltestrap';
   import NewClient from './NewClient.svelte';
   import NewCustomer from './NewCustomer.svelte';
@@ -22,76 +24,83 @@
 
   let new_client = false;
   let new_customer = false;
+
+  let count = 1;
+
 </script>
 
-<div class="wrapper">
-  <form id="form1">
-    <h2>Cliente</h2>
-    <select required="required" name="operation[company_id]" id="operation_company_id">
-      {#each clients as client}
-        <option value={client.id}>{client.name}</option>
-      {/each}
-    </select>
-    <br>    
-    <a href="#" on:click={() => new_client =! new_client}>Nuevo Cliente</a>
-    
-    {#if new_client}
-      <div class="new_wrapper">
-        <NewClient bind:clients={clients} bind:new_client={new_client} />
+{#each Array(count) as _, i}
+
+  <div class="wrapper">
+    <form id="form1">
+      <h2>Cliente</h2>
+
+      <select required="required" name="operation[company_id]" id="operation_company_id">
+        {#each clients as client}
+          <option value={client.id}>{client.name}</option>
+        {/each}
+      </select>
+      <br>    
+      <a href="#" on:click={() => new_client =! new_client}>Nuevo Cliente</a>
+
+      {#if new_client}
+        <div class="new_wrapper">
+          <NewClient bind:clients={clients} bind:new_client={new_client} />
+        </div>
+      {/if}
+
+      <h2>Solicitante</h2>
+      
+      <select required="required" name="operation[customer_id]" id="operation_customer_id">
+        {#each customers as customer}
+          <option value={customer.id}>{customer.name}</option>
+        {/each}
+      </select>
+      <br>
+      <a href="#" on:click={() => new_customer = !new_customer}>Nuevo Solicitante</a>
+
+      {#if new_customer}
+        <NewCustomer bind:customers={customers} bind:new_customer={new_customer} />
+      {/if}
+
+      <h2>Categoría</h2>
+      <div>
+        <label for="operation_status" class="category">
+          <input type="radio" name="category" value="new">
+          Nueva
+        </label>
+        <label for="operation_status" class="category">
+          <input type="radio"  name="category" value="repair">
+          Reparo
+        </label>
+      </div>  
+
+      <h2>Producto</h2>
+
+      <select name="operation[product]" id="operation_product">
+        {#each products as product}
+          <option value={product.id}>{product.name}</option>
+        {/each}
+      </select>
+
+      <h2>Sub-Producto</h2>
+
+      <select name="operation[sub_products]" id="operation_sub_product">
+        {#each sub_products as sub_product}
+          <option value={sub_products.id}>{sub_product.name}</option>
+        {/each}
+      </select>
+
+      <h2>Información adicional</h2>
+      <textarea name="operation[observation]" id="operation_observation"></textarea>
+      <br>
+
+      <div class="center">
+        <Button outline class="my-3" on:click={() => count += 1}>Crear Operación</Button>
       </div>
-    {/if}
-
-    <h2>Solicitante</h2>
-    
-    <select required="required" name="operation[customer_id]" id="operation_customer_id">
-      {#each customers as customer}
-        <option value={customer.id}>{customer.name}</option>
-      {/each}
-    </select>
-    <br>
-    <a href="#" on:click={() => new_customer = !new_customer}>Nuevo Solicitante</a>
-
-    {#if new_customer}
-      <NewCustomer bind:customers={customers} bind:new_customer={new_customer} />
-    {/if}
-
-    <h2>Categoría</h2>
-    <div>
-      <label for="operation_status" class="category">
-        <input type="radio" name="category" value="new">
-        Nueva
-      </label>
-      <label for="operation_status" class="category">
-        <input type="radio"  name="category" value="repair">
-        Reparo
-      </label>
-    </div>  
-
-    <h2>Producto</h2>
-
-    <select name="operation[product]" id="operation_product">
-      {#each products as product}
-        <option value={product.id}>{product.name}</option>
-      {/each}
-    </select>
-
-    <h2>Sub-Producto</h2>
-
-    <select name="operation[sub_products]" id="operation_sub_product">
-      {#each sub_products as sub_product}
-        <option value={sub_products.id}>{sub_product.name}</option>
-      {/each}
-    </select>
-
-    <h2>Información adicional</h2>
-    <textarea name="operation[observation]" id="operation_observation"></textarea>
-    <br>
-   
-    <div class="center">
-      <Button outline class="my-3">Crear Operación</Button>
-    </div>
-   </form>
-</div>
+     </form>
+  </div>
+{/each}
 
 <style>
   .category {

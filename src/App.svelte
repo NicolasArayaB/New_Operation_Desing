@@ -8,7 +8,7 @@
 </script>
 
 <header>
-	<Navbar bind:options={options}/>
+	<Navbar bind:options={options} />
 </header>
 
 <main>
