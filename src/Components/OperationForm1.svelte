@@ -32,7 +32,7 @@ import { prevent_default } from 'svelte/internal';
 {#each Array(count) as _, i}
 
   <div class="wrapper">
-    <form id="form1">
+    <form id="form1" on:submit|preventDefault={()=>count += 1}>
       <h2>Cliente</h2>
 
       <select required="required" name="operation[company_id]" id="operation_company_id">
@@ -96,7 +96,7 @@ import { prevent_default } from 'svelte/internal';
       <br>
 
       <div class="center">
-        <Button outline class="my-3" on:click={() => count += 1}>Crear Operación</Button>
+        <Button outline class="my-3">Crear Operación</Button>
       </div>
      </form>
   </div>
