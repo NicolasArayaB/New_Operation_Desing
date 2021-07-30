@@ -4,12 +4,12 @@
   export let clients;
   export let new_client;
 
-  function addCompany() {
+  const addCompany = () => {
     let client_name = document.getElementById("name").value;
     
     clients = [...clients, {id: clients.length + 1, name: client_name}];
     new_client = !new_client;
-  }
+  };
 </script>
 
 <div>

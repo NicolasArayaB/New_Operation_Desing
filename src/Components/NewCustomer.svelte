@@ -4,14 +4,14 @@
   export let customers;
   export let new_customer;
   
-  function addCustomer() {
+  const addCustomer = () => {
     let f_name = document.getElementById("first_name").value;
     let l_name = document.getElementById("last_name").value;
     let customer_name = f_name + " " + l_name;
     
     customers = [...customers, {id: customers.length + 1, name: customer_name}];
     new_customer = !new_customer;
-  }
+  };
 </script>
 
 <div>

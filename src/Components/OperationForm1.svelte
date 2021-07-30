@@ -7,29 +7,29 @@
     {id: 1, name: "Seleccione un Cliente"},
     {id: 2, name: "Banco Santander"},
     {id: 3, name: "Banco Internacional"},
-    {id:4 , name: "Scotiabank"}
+    {id: 4, name: "Scotiabank"}
   ];
 
   let customers = [
-    {id:1, name:"Seleccione al solicitante"},
-    {id:2, name:"Pedro Perez"},
-    {id:3, name:"Hernan Hernandez"},
-    {id:4, name:"Fernanda Fernandez"},
-    {id:5, name:"Henrique Henriquez"}
+    {id: 1, name: "Seleccione al solicitante"},
+    {id: 2, name: "Pedro Perez"},
+    {id: 3, name: "Hernan Hernandez"},
+    {id: 4, name: "Fernanda Fernandez"},
+    {id: 5, name: "Henrique Henriquez"}
   ];
 
   let sub_products = [
-    {id: 1, name:"Seleccione un Sub-Producto"},
-    {id: 2, name:"Inf. Soc y Poderes"},
-    {id: 3, name:"P. Efectivas"}
+    {id: 1, name: "Seleccione un Sub-Producto"},
+    {id: 2, name: "Inf. Soc y Poderes"},
+    {id: 3, name: "P. Efectivas"}
   ];
 
   let products = [
-    {id:1, name: "Seleccione un Producto"},
-    {id:2, name: "Retail"},
-    {id:3, name: "Corporativo"},
-    {id:4, name: "Baja"},
-    {id:5, name: "Garantías"}
+    {id: 1, name: "Seleccione un Producto"},
+    {id: 2, name: "Retail"},
+    {id: 3, name: "Corporativo"},
+    {id: 4, name: "Baja"},
+    {id: 5, name: "Garantías"}
   ];
 
   let new_client = false;
@@ -49,7 +49,7 @@
         {/each}
       </select>
       <br>    
-      <a href="#" on:click={()=>new_client =! new_client}>Nuevo Cliente</a>
+      <a href="#new_client" on:click={()=>new_client =! new_client}>Nuevo Cliente</a>
 
       {#if new_client}
         <div class="new_wrapper">
@@ -65,7 +65,7 @@
         {/each}
       </select>
       <br>
-      <a href="#" on:click={()=>new_customer = !new_customer}>Nuevo Solicitante</a>
+      <a href="#new_customer" on:click={()=>new_customer = !new_customer}>Nuevo Solicitante</a>
 
       {#if new_customer}
         <NewCustomer bind:customers={customers} bind:new_customer={new_customer} />

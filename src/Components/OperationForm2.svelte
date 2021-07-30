@@ -3,27 +3,26 @@
 	import NewClient from './NewClient.svelte';
   import NewCustomer from './NewCustomer.svelte';
 
-
   let clients = [
     {id: 1, name: "Seleccione un Cliente"},
     {id: 2, name: "Banco Santander"},
     {id: 3, name: "Banco Internacional"},
-    {id: 4 , name: "Scotiabank"}
-  ]
+    {id: 4, name: "Scotiabank"}
+  ];
 
   let customers = [
-    {id: 1, name:"Seleccione al solicitante"},
-    {id: 2, name:"Pedro Perez"},
-    {id: 3, name:"Hernan Hernandez"},
-    {id: 4, name:"Fernanda Fernandez"},
-    {id: 5, name:"Henrique Henriquez"}
-  ]
+    {id: 1, name: "Seleccione al solicitante"},
+    {id: 2, name: "Pedro Perez"},
+    {id: 3, name: "Hernan Hernandez"},
+    {id: 4, name: "Fernanda Fernandez"},
+    {id: 5, name: "Henrique Henriquez"}
+  ];
 
   let sub_products = [
-    {id: 1, name:"Seleccione un Sub-Producto"},
-    {id: 2, name:"Inf. Soc y Poderes"},
-    {id: 3, name:"P. Efectivas"}
-  ]
+    {id: 1, name: "Seleccione un Sub-Producto"},
+    {id: 2, name: "Inf. Soc y Poderes"},
+    {id: 3, name: "P. Efectivas"}
+  ];
 
   let products = [
     {id: 1, name: "Seleccione un Producto"},
@@ -31,7 +30,7 @@
     {id: 3, name: "Corporativo"},
     {id: 4, name: "Baja"},
     {id: 5, name: "Garantías"}
-  ]
+  ];
 
   let new_client = false;
   let new_customer = false;
@@ -39,7 +38,6 @@
   
   const toggle_cl = () => (new_client = !new_client);
   const toggle_cu = () => (new_customer = !new_customer);
-
 </script>
 
 <Modal body header="Nuevo Cliente" isOpen={new_client} toggle={toggle_cl}>
