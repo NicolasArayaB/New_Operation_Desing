@@ -40,10 +40,6 @@
   const toggle_cl = () => (new_client = !new_client);
   const toggle_cu = () => (new_customer = !new_customer);
 
-  function handleSubmit() {
-    console.log("submitted")
-  }
-
 </script>
 
 <Modal body header="Nuevo Cliente" isOpen={new_client} toggle={toggle_cl}>
@@ -68,13 +64,14 @@
       <th>Producto</th>
       <th>Sub-Producto</th>
       <th>Información adicional</th>
-      <th><form on:submit|preventDefault={()=>count += 1} id="form2"><input type="hidden" name="id" value="1" /></form></th>
+      <th/>
     </tr>
     
     {#each Array(count) as _, i}
       <tr>
         <td>
-          <select form="form2" required="required"  name="operation[company_id]" id="operation_company_id">
+          <form on:submit|preventDefault={()=>count += 1} id={i}><input type="hidden" name="id" value="1" />
+          <select form={i} required="required"  name="operation[company_id]" id="operation_company_id">
           {#each clients as client}
             <option value={client.id}>{client.name}</option>
           {/each}
@@ -82,7 +79,7 @@
         </td>
 
         <td>
-          <select form="form2" required="required" name="operation[customer_id]" id="operation_customer_id" >
+          <select form={i} required="required" name="operation[customer_id]" id="operation_customer_id" >
             {#each customers as customer}
               <option value={customer.id}>{customer.name}</option>
             {/each}
@@ -92,18 +89,18 @@
         <td>
           <div>
             <label for="operation_status" class="category">
-              <input form="form2" type="radio" name="category" value={i}>
+              <input form={i} type="radio" name="category" value="new">
               Nueva
             </label>
             <label for="operation_status" class="category">
-              <input form="form2" type="radio"  name="category" value={i}>
+              <input form={i} type="radio"  name="category" value="repair">
               Reparo
             </label>
           </div>
         </td>
 
         <td>
-          <select form="form2" name="operation[product]" id="operation_product">
+          <select form={i} name="operation[product]" id="operation_product">
             {#each products as product}
               <option value={product.id}>{product.name}</option>
             {/each}
@@ -111,7 +108,7 @@
         </td>
 
         <td>
-          <select form="form2" name="operation[sub_products]" id="operation_sub_product">
+          <select form={i} name="operation[sub_products]" id="operation_sub_product">
             {#each sub_products as sub_product}
               <option value={sub_products}>{sub_product.name}</option>
             {/each}
@@ -119,11 +116,11 @@
         </td>
 
         <td>
-          <textarea form="form2" name="operation[observation]" id="operation_observation"></textarea>
+          <textarea form={i} name="operation[observation]" id="operation_observation"></textarea>
         </td>
 
         <td>
-          <Button type="submit" form="form2" outline class="m-3">Crear Operación</Button>
+          <Button type="submit" form={i} outline class="m-3">Crear Operación</Button>
         </td>
       </tr>
     {/each}

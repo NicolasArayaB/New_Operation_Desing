@@ -1,6 +1,4 @@
 <script>
-import { prevent_default } from 'svelte/internal';
-
   import { Button } from 'sveltestrap';
   import NewClient from './NewClient.svelte';
   import NewCustomer from './NewCustomer.svelte';
