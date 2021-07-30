@@ -4,7 +4,7 @@
 	import OperationForm3 from './Components/OperationForm3.svelte';
 	import Navbar from './Components/Navbar.svelte';
 
-	let options = [{id: 1, status: false}, {id: 2, status: false}, {id: 3, status: true}];
+	let options = [{id: 1, status: true}, {id: 2, status: false}, {id: 3, status: false}];
 
 </script>
 
