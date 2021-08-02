@@ -123,7 +123,7 @@
   }
 
   .title {
-    margin-top: 4em;
+    margin-top: 5em;
   }
 
   .wrapper {
