@@ -21,7 +21,7 @@
 
   .nav-bar a {
     color: #ffffff;
-    margin: 5rem;
+    margin: 0 5rem;
     text-decoration: none;
   }
 </style>

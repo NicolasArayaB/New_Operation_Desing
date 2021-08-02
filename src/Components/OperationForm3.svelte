@@ -50,12 +50,15 @@
 </Modal>
 
 <div class="mt-5 fixed-top">
+  <div class="title">
+    <h1>Opción 3</h1>
+  </div>
   <Button outline class="m-3" on:click={toggle_cl}>Nuevo Cliente</Button>
   <Button outline class="m-3" on:click={toggle_cu}>Nuevo Solicitante</Button>
 </div>
 
 <Container>
-  <Row class="d-flex flex-nowrap">
+  <Row class="d-flex flex-nowrap mt-5">
     {#each Array(count) as _, i}
     <Col>
       <div class="wrapper mx-auto">
@@ -126,12 +129,16 @@
     padding: 5px;
   }
 
+  .title {
+    margin-top: 2em;
+  }
+
   .wrapper {
 	  background-color: #ffffff;
 	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	  display: flex;
 	  justify-content: center;
-    margin-top: 8em;
+    margin-top: 12em;
 	  max-width: 25em;
 	  min-width: 22em;
 	  padding: 8px;

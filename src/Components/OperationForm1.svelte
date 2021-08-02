@@ -38,6 +38,10 @@
   let count = 1;
 </script>
 
+<div class="title">
+  <h1>Opción 1</h1>
+</div>
+
 {#each Array(count) as _, i}
   <div class="wrapper">
     <form on:submit|preventDefault={()=>count += 1}>
@@ -118,13 +122,17 @@
     padding: 5px;
   }
 
+  .title {
+    margin-top: 4em;
+  }
+
   .wrapper {
 	  background-color: #ffffff;
 	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	  display: flex;
 	  justify-content: center;
 	  max-width: 25em;
-	  margin: 5em auto;
+	  margin: 2em auto;
 	  padding: 8px;
 	  text-align: start;
   }

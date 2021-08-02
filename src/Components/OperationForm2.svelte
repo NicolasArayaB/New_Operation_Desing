@@ -49,6 +49,9 @@
 </Modal>
 
 <div class="new_links">
+  <div class="title">
+    <h1>Opción 2</h1>
+  </div>
   <Button outline class="m-3" on:click={toggle_cl}>Nuevo Cliente</Button>
   <Button outline class="m-3" on:click={toggle_cu}>Nuevo Solicitante</Button>
 </div>
@@ -142,6 +145,10 @@
     padding: 1em 1em 0 1em;
     width: min-content;
     text-align: center;
+  }
+
+  .title {
+    margin-top: 4em;
   }
 
 </style>
